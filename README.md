@@ -24,6 +24,10 @@ This repo implements a basic shopping cart microservice in Go with a memory back
 
 ## Deployment
 
+If this was to be deployed in the real world. The application would be packaged into a Docker container, and deployed to Kubernetes with a horizontal pod autoscaler to ensure it can scale appropriately. Builds and deployments could be managed with an AWS codepipeline and AWS code deploy scripts.
+
+As the data is currently just JSON and non-relational, it might make sense to use a NoSQL database such as MongoDB, or DynamoDB. This could be integrated quite easily by modifying the `store.go` file.
+
 ## Uninstall
 
 If have never installed Go before, and wish to uninstall Go to keep your system clean, you can use the following guide. https://golang.org/doc/install#uninstall
