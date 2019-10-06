@@ -10,9 +10,10 @@ This repo implements a basic shopping cart microservice in Go with a memory back
 
 ## Installation
 
-1. Install Go first. I like to use the official instructions, there is installation packages for OS X and Windows. https://golang.org/doc/install
+1. Install Go first. I like to use the official instructions, there is installation packages for OS X and Windows. https://golang.org/doc/install. You'll need to open a new terminal once installed.
 2. Once installed, test go is working. `go version`. You should see something like: `go version go1.13 darwin/amd64`
-3. Install this package. Go has a clever package manager, no need to git clone packages, we can download it using the go tools. `go get rickihastings/shopping-cart`
+3. Install this package. Go has a clever package manager, no need to git clone packages, we can download it using the go tools. `go get github.com/rickihastings/shopping-cart`
+4. Change directory to the package `cd $GOPATH/src/github.com/rickihastings/shopping-cart`
 
 ## Running
 
@@ -21,6 +22,11 @@ This repo implements a basic shopping cart microservice in Go with a memory back
 ## Testing
 
 `go test ./pkg/api`
+
+## Architecture
+
+The structure of the project follows a fairly standard go project architecture. The binary which runs is located under `cmd/shopping-cart`.
+All logic is located under `pkg/api` which only exports one function. `CreateHTTPServer`. See https://github.com/golang-standards/project-layout for more information.
 
 ## Deployment
 
