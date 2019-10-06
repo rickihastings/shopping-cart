@@ -85,33 +85,25 @@ func calculateBox(items []deliveryRequest) []deliveryBox {
 }
 
 func calculateBoxes(items []deliveryRequest) deliveryResponse {
-	// Copy the items, so we're not mutating
-	sortedItems := []deliveryRequest{}
-	sortedItems = append([]deliveryRequest(nil), items...)
-
 	// First sort the items by their weight, smallest to heaviest
-	sort.Slice(sortedItems, func(i, j int) bool {
-		return sortedItems[i].Weight < sortedItems[j].Weight
+	sort.Slice(items, func(i, j int) bool {
+		return items[i].Weight < items[j].Weight
 	})
 
-	return convertBoxesToResponse(calculateBox(sortedItems))
+	return convertBoxesToResponse(calculateBox(items))
 }
 
 func convertBoxesToResponse(boxes []deliveryBox) deliveryResponse {
-	// Copy the items, so we're not mutating
-	sortedItems := []deliveryBox{}
-	sortedItems = append([]deliveryBox(nil), boxes...)
-
 	// Sort the items by delivery date
-	sort.Slice(sortedItems, func(i, j int) bool {
-		return sortedItems[i].DeliveryDays < sortedItems[j].DeliveryDays
+	sort.Slice(boxes, func(i, j int) bool {
+		return boxes[i].DeliveryDays < boxes[j].DeliveryDays
 	})
 
-	if len(sortedItems) == 0 {
+	if len(boxes) == 0 {
 		return deliveryResponse{}
 	}
 
-	smallestBox := sortedItems[0]
+	smallestBox := boxes[0]
 
 	return deliveryResponse{
 		IDs:          mapBoxToIDs(smallestBox.Items),
