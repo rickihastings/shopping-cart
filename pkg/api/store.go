@@ -16,7 +16,7 @@ func init() {
 	items = []item{}
 }
 
-func indexOf(id int, data []item) int {
+func findInStore(id int, data []item) int {
 	for k, v := range data {
 		if id == v.ID {
 			return k
@@ -38,7 +38,7 @@ func addItemToStore(request addItemRequest) error {
 }
 
 func removeItemFromStore(id int) error {
-	index := indexOf(id, items)
+	index := findInStore(id, items)
 	if index != -1 {
 		// As I'd like to keep the items ordered, in Golang we have to shift all of the elements at
 		// the right of the one being deleted, by one to the left.
