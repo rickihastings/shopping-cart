@@ -16,7 +16,11 @@ This repo implements a basic shopping cart microservice in Go with a memory back
 
 ## Running
 
+`go run ./cmd/shopping-cart/`
+
 ## Testing
+
+`go test ./pkg/api`
 
 ## Deployment
 
